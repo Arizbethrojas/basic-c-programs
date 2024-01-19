@@ -1,6 +1,8 @@
-# Your name
+# Arizbeth Rojas
 ## CS50 Winter 2024, Lab 2
 
-GitHub username:
+GitHub username: Arizbethrojas
 
-*Please replace this text with any comments you have about the overall assignment.  Your solutions should be in other files as defined by the assignment.*
+*There are additional files in the words directory to show that the program works with example txt files. 
+
+You will need like link math (-lm) to run histo.c and chill.c *

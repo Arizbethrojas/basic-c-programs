@@ -1,0 +1,72 @@
+ml () {  module ml "$@"
+}
+module () {  _module_raw "$@" 2>&1
+}
+_module_raw () {  eval `/usr/bin/tclsh8.6 /usr/lib/x86_64-linux-gnu/modulecmd.tcl bash "$@"`;
+ _mlstatus=$?;
+ return $_mlstatus
+}
+#!/bin/bash
+# testing file for the program chill.c 
+# Arizbeth Rojas 2024 
+#
+# zero arguments                                                                    
+./chill
+testing.sh: line 6: ./chill: No such file or directory
+# one int argument in range                                                                   
+./chill 32
+testing.sh: line 8: ./chill: No such file or directory
+# one double argument in range 
+./chill 44.0 
+testing.sh: line 10: ./chill: No such file or directory
+# one invalid alphabet input 
+./chill z 
+testing.sh: line 12: ./chill: No such file or directory
+# one valid argument in range that is very long 
+./chill -17.77483901016373785849020017377474020107484940010174757490301010028474894
+testing.sh: line 14: ./chill: No such file or directory
+# temp out of range, too big                                                                 
+./chill 55
+testing.sh: line 16: ./chill: No such file or directory
+# temp out of range, too small                                                                 
+./chill -200
+testing.sh: line 18: ./chill: No such file or directory
+# one argument at inclusive part of temp range (-99) 
+./chill -99
+testing.sh: line 20: ./chill: No such file or directory
+# one argument at inclusive part of temp range (50) 
+./chill 50 
+testing.sh: line 22: ./chill: No such file or directory
+# one argument with an alphabet as input 
+./chill 15mouse 
+testing.sh: line 24: ./chill: No such file or directory
+# two arguments: wind at inclusive part of range (0.5) 
+./chill 32 0.5
+testing.sh: line 26: ./chill: No such file or directory
+# two arguments: wind at inclusive part of range (231) 
+./chill 32 231
+testing.sh: line 28: ./chill: No such file or directory
+# two arguments each at respective range
+./chill 50 0.5
+testing.sh: line 30: ./chill: No such file or directory
+# two valid arguments                                                                     
+./chill 32.5 10
+testing.sh: line 32: ./chill: No such file or directory
+# two arguments: wind out of range, too small                                                               
+./chill 10 0
+testing.sh: line 34: ./chill: No such file or directory
+# two arguments: wind out of range, too big                                                               
+./chill 10 400
+testing.sh: line 36: ./chill: No such file or directory
+# two arguments: temp out of range                                                                 
+./chill 60 200
+testing.sh: line 38: ./chill: No such file or directory
+# two arguments: invalid temp argument                                                                 
+./chill 638.5.5.4 200
+testing.sh: line 40: ./chill: No such file or directory
+# two arguments: invalid wind argument                                                                 
+./chill 30 638.5.5.4
+testing.sh: line 42: ./chill: No such file or directory
+# too many arguments
+./chill 20 18 28 288 28888 
+testing.sh: line 44: ./chill: No such file or directory
